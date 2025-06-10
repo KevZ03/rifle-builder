@@ -1,0 +1,219 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'SerpentineBold';
+  src: url('./SerpentineStd-Bold.woff2') format('woff2'),
+       url('./SerpentineStd-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Serpentine';
+  src: url('./SerpentineStd-Medium.woff2') format('woff2'),
+       url('./SerpentineStd-Medium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'SerpentineLight';
+  src: url('./SerpentineStd-Light.woff2') format('woff2'),
+       url('./SerpentineStd-Light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+/* 1. CSS Variables (Custom Properties) */
+/* Define your design tokens here for easy consistency and theming. */
+:root {
+  /* Colors */
+  --color-primary: #ffffff;           /* Primary brand color */
+  --color-primary-dark: #232323;      /* Darker shade of primary */
+  --color-accent-main: #77684F;
+  --color-accent: #A4967F; /* #282923 BackUp Accent color */
+  --color-background-light: #FFFFFF;  /* Light background for general content */
+  --color-background-dark: #232323;   /* Slightly darker background for sections/cards */
+  --color-text-dark: #212121;         /* Dark text for light backgrounds */
+  --color-text-light: #FFFFFF;        /* Light text for dark backgrounds */
+  --color-text-secondary: #757575;    /* Secondary text color (e.g., descriptions) */
+  --color-border: #E0E0E0;            /* Default border color */
+  --color-success: #4CAF50;           /* Success messages/icons */
+  --color-error: #F44336;             /* Error messages/icons */
+  --color-warning: #FFC107;           /* Warning messages/icons */
+
+  /* Typography */
+  --font-family-base: 'SerpentineMedium', sans-serif; /* Your primary font, with fallbacks */
+  --font-family-heading: 'SerpentineBold', sans-serif; /* Optional: different font for headings */
+  --font-size-base: 16px;
+  --font-size-sm: 14px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-h1: 2rem;
+  --font-size-h2: 2.5rem;
+  --font-size-h3: 2rem;
+  --line-height-base: 1.5;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing (based on a 4px or 8px grid) */
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  --spacing-xxl: 64px;
+
+  /* Border Radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-full: 9999px; /* For pills, circles */
+
+  /* Box Shadows */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* Transitions */
+  --transition-speed: 0.2s;
+  --transition-ease: ease-in-out;
+}
+
+
+/* 2. Base Styles */
+/* These styles apply globally to fundamental HTML elements. */
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text-light);
+  background-color: var(--color-background-dark);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  color: var(--color-text-light);
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+  font-weight: var(--font-weight-bold);
+}
+
+h1 { font-size: var(--font-size-h1); }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); }
+h4 { font-size: var(--font-size-xl); }
+h5 { font-size: var(--font-size-lg); }
+h6 { font-size: var(--font-size-base); }
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-speed) var(--transition-ease);
+}
+
+a:hover {
+  color: var(--color-primary-light);
+  text-decoration: underline;
+}
+
+button, input[type="submit"] {
+  cursor: pointer;
+  border: none;
+  background-color: var(--color-accent-main);
+  color: var(--color-text-light);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  transition: background-color var(--transition-speed) var(--transition-ease);
+}
+
+button:hover, input[type="submit"]:hover {
+  background-color: var(--color-accent);
+  border: none;
+
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-xs);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  color: var(--color-text-dark);
+  transition: border-color var(--transition-speed) var(--transition-ease);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* 3. Utility Classes (Optional - if not using Tailwind for everything) */
+/* If you need to apply some specific, non-Tailwind-like utilities,
+      you can define them here. However, with Tailwind, these are often
+      redundant. */
+
+/* .text-center {
+  text-align: center;
+}
+
+.m-auto {
+  margin: auto;
+} */
+
+/* 4. Responsive Design (Media Queries) */
+/* Adjust styles for different screen sizes. */
+
+/* Small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  :root {
+    --font-size-base: 15px;
+    --font-size-h1: 2.5rem;
+    --font-size-h2: 2rem;
+  }
+}
+
+/* Medium devices (tablets, 601px to 768px) */
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+  /* Adjustments for tablets */
+}
+
+/* Large devices (desktops, 769px and up) */
+@media only screen and (min-width: 769px) {
+  /* Adjustments for desktops */
+}
+
+/*
+ * Note: If you're using Tailwind CSS extensively, many of the base styles
+ * (like typography, spacing, shadows) and utility classes will be handled
+ * by Tailwind's utility-first approach and its configuration.
+ *
+ * This `theme.css` primarily serves to define your core design tokens via
+ * CSS variables and any essential global overrides that Tailwind doesn't
+ * directly cover or that you prefer to manage outside of component classes.
+ */
+
+
+ 

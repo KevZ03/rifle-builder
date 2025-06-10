@@ -1,0 +1,19 @@
+@import url('theme.css');
+
+.selector {
+  border-color: var(--color-accent-main);
+  border-radius: 0.3em;
+  color: var(--color-text-light);
+  padding-left: .5em;
+  height: 60px;
+  font-size: 1.2em;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.selector > option {
+  color: var(--color-text-dark);
+  height: 50px;
+  padding: 1em;
+}
